@@ -42,7 +42,7 @@ def calculate_streak_and_break(name):
     workout_dates = {
         row['Date'].date()
         for _, row in df.iterrows()
-        if '✅' in [row['Burpees Done'], row['Skipping Done'], row['Pushups Done'], row['High Knees Done']]
+        if '✅' in [row['Jumping Jacks Done'], row['Skipping Done'], row['Pushups Done'], row['High Knees Done']]
     }
 
     # Check consecutive calendar days backward
@@ -79,7 +79,7 @@ def log_exercise(label, is_time_based=False):
     return done, sets, reps
 
 # Inputs for each exercise
-burpees_done, burpees_sets, burpees_reps = log_exercise("Burpees")
+jacks_done, jacks_sets, jacks_reps = log_exercise("Jumping Jacks")
 skipping_done, skipping_sets, skipping_reps = log_exercise("Skipping", is_time_based=True)
 pushups_done, pushups_sets, pushups_reps = log_exercise("Push-ups")
 highknees_done, highknees_sets, highknees_reps = log_exercise("High Knees")
@@ -93,7 +93,7 @@ st.subheader("💊 Supplements")
 protein = st.radio("Protein taken?", ["✅ Yes", "❌ No"])
 
 # XP Calculation (core + protein, max 10)
-num_ex_done = sum([burpees_done, skipping_done, pushups_done, highknees_done])
+num_ex_done = sum([jacks_done, skipping_done, pushups_done, highknees_done])
 
 if num_ex_done == 4:
     xp = 9
@@ -134,7 +134,7 @@ else:
 if st.button("🚀 Submit Workout"):
     sheet.append_row([
         today, name,
-        "✅" if burpees_done else "❌", burpees_sets, burpees_reps,
+        "✅" if jacks_done else "❌", jacks_sets, jacks_reps,
         "✅" if skipping_done else "❌", skipping_sets, skipping_reps,
         "✅" if pushups_done else "❌", pushups_sets, pushups_reps,
         "✅" if highknees_done else "❌", highknees_sets, highknees_reps,
