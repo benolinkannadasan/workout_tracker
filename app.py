@@ -23,7 +23,7 @@ sheet = get_sheet()
 # UI Header
 st.title("🔥 Workout Tracker")
 
-name = st.selectbox("Your Name", ["Beno", "Yal", "Sati", "Pal","Krishna"])
+name = st.selectbox("Your Name", ["Beno", "Yal", "Sati", "Pal",])
 today = date.today().isoformat()
 st.markdown(f"📅 **Date:** {today}")
 
