@@ -36,8 +36,8 @@ if df.empty:
 users = df['Name'].unique().tolist()
 
 emoji_map = {
-    "Beno": "🔥",
-    "Yal": "🧘",
+    "Beno": "🧍‍♂️",
+    "Yal": "🧘‍♀️",
     "Sati": "🏋️",
     "Pal": "🚴",
     "Krishna": "🤸"
