@@ -7,7 +7,7 @@ from datetime import datetime
 # Load sheet
 from google.oauth2.service_account import Credentials
 
-@st.cache_resource
+@st.cache_data(ttl=60)
 def get_data():
     scopes = [
         "https://www.googleapis.com/auth/spreadsheets",
@@ -24,9 +24,14 @@ df = get_data()
 
 st.title("📊 Workout Dashboard")
 
+if st.button("🔄 Refresh Data"):
+    st.cache_data.clear()
+    st.rerun()
+
 if df.empty:
     st.warning("No data found yet. Log your first workout in the main app!")
     st.stop()
+st.write("👤 Detected users:", df['Name'].unique())
 
 # Clean data
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
