@@ -111,7 +111,7 @@ if protein == "✅ Yes":
     xp += 1
 
 # Streak penalty
-_, streak_broken_today, _ = calculate_streak_and_break(name)
+streak, streak_broken_today = calculate_streak_and_break(name)
 if streak_broken_today and xp > 0:
     xp = max(0, xp - 2)
     st.warning("⚠️ You broke your streak today — 2 XP deducted.")
