@@ -31,7 +31,21 @@ if st.button("🔄 Refresh Data"):
 if df.empty:
     st.warning("No data found yet. Log your first workout in the main app!")
     st.stop()
-st.write("👤 Detected users:", df['Name'].unique())
+
+# Show users in a fun way
+users = df['Name'].unique().tolist()
+
+emoji_map = {
+    "Beno": "🔥",
+    "Yal": "🧘",
+    "Sati": "🏋️",
+    "Pal": "🚴",
+    "Krishna": "🤸"
+}
+
+user_display = " | ".join(f"{emoji_map.get(user, '🙂')} **{user}**" for user in users)
+st.markdown(f"### 👥 **Active Users:** {user_display}")
+
 
 # Clean data
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
