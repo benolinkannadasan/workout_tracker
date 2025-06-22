@@ -5,7 +5,7 @@ st.title("ℹ️ How This Tracker Works")
 st.markdown("## 🏋️ Your Daily Routine")
 st.markdown("""
 You commit to doing **any or all of these core exercises daily**:
-- ✅ **Burpees**
+- ✅ **Jumping Jacks**
 - ✅ **Skipping**
 - ✅ **Push-ups**
 - ✅ **High Knees**
@@ -47,7 +47,7 @@ A **streak** means you're showing up **daily without skipping a calendar day**.
 - If you miss a day, your streak resets to 0.
 
 Examples:
-- Burpees + Push-ups on Monday → ✅ streak continues  
+- Jacks + Push-ups on Monday → ✅ streak continues  
 - Only bonus activities → ❌ no streak  
 - No log on Tuesday → ❌ streak breaks
 """)
@@ -65,11 +65,6 @@ You unlock fun badges daily based on how much effort you put in:
 """)
 
 st.caption("Note: These are not linked to XP — just encouragement 💪")
-
-st.markdown("---")
-
-st.markdown("## 📊 Dashboard Coming Soon")
-st.markdown("You'll soon see your full history, XP graph, and a leaderboard for friendly competition.")
 
 st.markdown("---")
 
