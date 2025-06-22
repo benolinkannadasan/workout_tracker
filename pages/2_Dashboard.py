@@ -62,7 +62,7 @@ st.line_chart(xp_chart.set_index('Date'))
 
 # Streak timeline
 st.subheader("🔥 Active Days Timeline")
-user_df['Workout Done'] = user_df[['Burpees Done', 'Skipping Done', 'Pushups Done', 'High Knees Done']].apply(
+user_df['Workout Done'] = user_df[['Jumping Jacks Done', 'Skipping Done', 'Pushups Done', 'High Knees Done']].apply(
     lambda row: '✅' in row.values, axis=1
 )
 calendar_df = user_df[['Date', 'Workout Done']].sort_values('Date')
@@ -71,7 +71,7 @@ st.bar_chart(calendar_df.set_index('Date')['Active'])
 
 # Recent logs
 st.subheader("📅 Recent Workouts")
-st.dataframe(user_df[['Date', 'XP', 'Burpees Done', 'Pushups Done', 'High Knees Done', 'Protein Taken']].head(10))
+st.dataframe(user_df[['Date', 'XP', 'Jumping Jacks Done', 'Pushups Done', 'High Knees Done', 'Protein Taken']].head(10))
 
 # Leaderboard
 st.subheader("🏆 Leaderboard (Total XP)")
