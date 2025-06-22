@@ -8,12 +8,12 @@ import pandas as pd
 # Google Sheets setup
 @st.cache_resource
 def get_sheet():
-    scope = [
-        "https://spreadsheets.google.com/feeds",
+    scopes = [
+        "https://www.googleapis.com/auth/spreadsheets",
         "https://www.googleapis.com/auth/drive"
     ]
     creds_dict = st.secrets["gcp_service_account"]
-    creds = Credentials.from_service_account_info(creds_dict)
+    creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
     client = gspread.authorize(creds)
     sheet = client.open("Workout Tracker").worksheet("workout_log")
     return sheet
