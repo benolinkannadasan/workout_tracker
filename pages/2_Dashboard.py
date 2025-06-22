@@ -5,10 +5,16 @@ import pandas as pd
 from datetime import datetime
 
 # Load sheet
+from google.oauth2.service_account import Credentials
+
 @st.cache_resource
 def get_data():
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+    scopes = [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/drive"
+    ]
+    creds_dict = st.secrets["gcp_service_account"]
+    creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
     client = gspread.authorize(creds)
     sheet = client.open("Workout Tracker").worksheet("workout_log")
     data = sheet.get_all_records()
